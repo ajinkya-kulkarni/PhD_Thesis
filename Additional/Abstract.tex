@@ -1,0 +1,32 @@
+\chapter*{Abstract}
+\chaptermark{Abstract}
+\label{chap:Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+
+%Insert your abstract below the line
+%-------------------------------------------
+
+Liquid-liquid phase separation is ubiquitous in everyday life, such as formation of oil droplets in water.
+This phenomena has been observed in biological cells as well, where membrane-less organelles, also known as condensates, form in the cell through Liquid-liquid phase separation.
+Precise spatiotemporal regulation of condensates is essential for proper functioning of the cell and it's survival.
+The cell exercises this control through various mechanisms, two of them being chemical reactions and external chemical gradients.
+
+In this thesis, we will develop a fast and efficient numerical model for simulating dynamics of droplets which have been phase separated from a dilute phase, without solving the computationally expensive \textit{Cahn-Hilliard} equation that describes phase separation.
+The aim of this thesis was to disentangle and model the effects of chemical reactions and external chemical gradients on the dynamics of such phase separated droplets via numerical simulations, and thus gain insights on how cell regulates the dynamics, formation, dissolution and stability of it's condensates.
+
+In the first part of the thesis, we derive observations from typical simulations of the \textit{Cahn-Hilliard} model, and build the theory for an effective droplet model with reasonable analytical assumptions.
+In such an effective droplet model, we replace the description of the full volume fraction field stemming from the \textit{Cahn-Hilliard} model with pertinent degrees of freedom for the phase separated droplets.
+To this end, we consider a typical situation of many spherical droplets formed via Liquid-liquid phase separation and are far away from each other.
+Droplets are then well described by their positions and radii, and the dilute phase dynamics by a coarse reaction-diffusion equation.
+We then study interaction of the droplets with the dilute phase by discretizing their vicinity into thin annular sectors.
+The dynamics of droplet growth and drift follows from material fluxes exchanged between the droplet and the dilute phase, which are obtained from solving a steady-state reaction-diffusion  equation inside all sectors.
+These fluxes also affect the dynamics of the dilute phase itself.
+
+The effective droplet model has many simulation parameters which need to be carefully chosen to faithfully capture growth and drift of droplets.
+In the second part of the thesis, we choose optimum values for the simulation parameters in the effective droplet model using a synthetic test-case and comparing it with the ground truth, i.e. simulations using the \textit{Cahn-Hilliard} model.
+We then demonstrate that our choice of the optimum parameters indeed leads to faithful capturing of droplet dynamics in emulsions across a multitude of situations; ranging from a single droplet in a large system to coarsening behaviour of $10^5$ droplets. 
+Furthermore, we also show that our model accurately captures the dynamic out of equilibrium behaviour of droplets in the presence of chemical reactions and external chemical gradients.
+
+Taken together, through rigorous testing and validation, we demonstrate that our effective droplet model is a pragmatic, fast and a computationally efficient option, if simulations of phase separated droplets in large-scale emulsions are desired.
+More importantly, we emphasize that our model can serve as a modular platform and can incorporate a plethora of other relevant physical phenomena which play a role in controlling condensate dynamics. 
+By disentangling and separately studying their effects on droplet dynamics, insights on how the cell regulates formation, dissolution, stability and size of biomolecular condensates can be obtained.

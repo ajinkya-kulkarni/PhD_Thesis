@@ -1,0 +1,325 @@
+\documentclass[12pt,oneside]{book}
+\usepackage[a4paper, margin=1in]{geometry}
+% \usepackage[margin=0.8in]{geometry}
+\usepackage{setspace}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\thepage}
+\lhead{\leftmark}
+
+% \renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{#1}}{}}
+
+% \pagestyle{headings}
+\usepackage{titlesec}
+\usepackage{titletoc}
+\usepackage{lipsum}
+% \usepackage{fmtcount} % for textual representation of numbers
+
+
+% \titleformat{\chapter}[display] 
+% {\normalfont\huge\bfseries}{\chaptertitlename\thechapter}{30pt}{\Huge}
+
+% \usepackage{titlesec}
+% \titlespacing*{\chapter}{0pt}{-30pt}{30pt}
+
+
+
+
+\usepackage{enumitem}
+\usepackage{makecell}
+\usepackage{float}
+\usepackage{amsmath,amssymb,amsthm,amsfonts}
+\usepackage{algorithmic}
+
+\usepackage{booktabs, multirow} % for borders and merged ranges
+\usepackage{tocloft}
+
+% \renewcommand{\cftchapfont}{\bfseries}
+% \renewcommand{\cftchappagefont}{\bfseries}
+% \renewcommand{\cftchappresnum}{Chapter }
+% \renewcommand{\cftchapaftersnum}{:}
+% \renewcommand{\cftchapnumwidth}{0em}
+\renewcommand\cftchapafterpnum{\vskip 10pt}
+
+
+\usepackage{tocbibind}
+\usepackage{soul}% for underlines
+\usepackage[table]{xcolor} % for cell colors
+% \usepackage{} % Change to other font if needed
+\usepackage{setspace}
+% \usepackage{textcomp}
+\usepackage{xcolor}
+
+\usepackage[backend=bibtex,
+style=numeric,
+sorting=none
+]{biblatex}
+
+% \usepackage[bookmarks=true, hidelinks]{hyperref}
+
+\usepackage[linktocpage,colorlinks=true,linkcolor=blue,citecolor=blue,breaklinks=true]{hyperref}
+
+\usepackage[utf8]{inputenc}
+\usepackage{appendix}
+\usepackage{listings}
+\usepackage{bm}
+% \usepackage{natbib}
+
+
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{5}
+
+\bibliography{Reference}
+
+\usepackage[normalem]{ulem}
+
+% \usepackage[dvipdfm]{graphicx}% http://ctan.org/pkg/graphicx
+\usepackage{graphicx}
+
+\usepackage[]{algorithm2e}
+% \usepackage{algpseudocode}
+
+%%% Custom commands %%%
+\renewcommand{\vec}{\boldsymbol}
+\newcommand{\diff}{\mathrm{d}}
+\newcommand{\abs}[1]{|#1|}
+\newcommand{\mean}[1]{\langle#1\rangle}
+\newcommand{\Eqref}[1]{Eq.~\eqref{#1}}
+\newcommand{\figref}[1]{Fig.~\ref{#1}}
+\newcommand{\Eqsref}[1]{Eqs.~\eqref{#1}}
+\newcommand{\phiEq}{\phi^\mathrm{eq}}
+\newcommand{\phiEqIn}{\phiEq_\mathrm{in}}
+\newcommand{\phiEqOut}{\phiEq_\mathrm{out}}
+\newcommand{\phiShell}{\phi_\mathrm{shell}}
+\newcommand{\jIn}{\vec{j}_\mathrm{in}}
+\newcommand{\jOut}{\vec{j}_\mathrm{out}}
+\newcommand{\phiIn}{\phi_\mathrm{in}}
+\newcommand{\phiOut}{\phi_\mathrm{out}}
+\newcommand{\vn}{v_\mathrm{n}}
+\newcommand{\dx}{\Delta x}
+\newcommand{\ds}{\Delta s}
+\newcommand{\dt}{\Delta t}
+\newcommand{\kOut}{k_\mathrm{out}}
+\newcommand{\kf}{k_\mathrm{f}}
+\newcommand{\kb}{k_\mathrm{b}}
+\newcommand{\assume}{\textcolor{cyan}}
+
+% \renewcommand{\nabla}{{\boldsymbol{\nabla}}}
+
+%%%
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Additional Material
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title Page %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} 
+%\TileWallPaper{\paperwidth}{\paperheight}{logo.pdf}
+\begin{center}
+%\Huge{\textsc{Masterarbeit \\[0,5cm] Fakultät für Physik\\Georg-August-Universität Göttingen}}\\[2.3cm]
+
+\vspace*{0cm}
+%\rule{460pt}{0,03cm}\\[0.5cm]
+\vspace*{2cm}
+
+\Huge{\textbf{Effective simulations of interacting droplets}}\\[2cm]
+%\rule{460pt}{0,03cm}\\[2cm]
+
+\LARGE{\textbf{Dissertation}}\\ [1cm]
+\large{for the award of the degree\\ ``Doctor rerum naturalium"\\ at the Georg-August-Universität Göttingen}\\[1cm]
+\large{within the doctoral degree programme\\[0.4cm] Physics of Biological and Complex Systems\\ of the G\"{o}ttingen Graduate School of Neurosciences, Biophysics, and \\Molecular Biosciences (GGNB)\\[0.1cm] of the Georg-August University School of Sciences (GAUSS) }\\[2cm]
+
+\large{submitted by}\\[0.5cm] 
+\large{\textbf{Ajinkya Mukund Kulkarni}}\\
+\vspace{0.1cm}
+\large{from Pune, India\\
+\vspace{1cm}
+G\"{o}ttingen, April 2022}\\
+
+\end{center}
+
+%%%%%%%%%%%%%%%% Defense Committee %%%%%%%%%%%%%%%% 
+\newpage
+\thispagestyle{empty} 
+
+\vspace{-2cm}
+\large\underline{Thesis advisory committee}\\[0.4cm]
+\normalsize{
+\indent $\quad$ \textbf{Dr. David Zwicker}\\[0.2cm]
+\indent $\quad$ Theory of Biological Fluids
+\\ 
+\indent $\quad$ Max Planck Institute for Dynamics and Self-Organization\\[0.4cm]
+\indent $\quad$ \textbf{Prof. Dr. Stefan Klumpp}\\[0.2cm]
+\indent $\quad$ Institut f\"{u}r Dynamik komplexer Systeme \\
+\indent $\quad$ Georg-August-Universität G\"{o}ttingen\\ [0.4cm]
+\indent $\quad$ \textbf{Prof. Dr. Michael Wilczek}\\[0.2cm]
+\indent $\quad$ Physikalisches Institut \\
+\indent $\quad$ Universität Bayreuth\\ [0.4cm]
+}
+\large\underline{Members of the examination board:}\\[0.4cm]
+\normalsize{
+\indent $\quad$ \textbf{Referee:}\\
+\indent $\quad$ \textbf{Dr. David Zwicker}\\[0.2cm]
+\indent $\quad$ Theory of Biological Fluids\\ 
+\indent $\quad$ Max Planck Institute for Dynamics and Self-Organization\\[0.4cm]
+\indent $\quad$ \textbf{Co-referee:}\\
+\indent $\quad$ \textbf{Prof. Dr. Stefan Klumpp}\\[0.2cm]
+\indent $\quad$ Institut f\"{u}r Dynamik komplexer Systeme \\
+\indent $\quad$ Georg-August-Universität G\"{o}ttingen\\ [0.4cm]
+}
+\large{Other Members of the Examination Board:}\\[0.5cm]
+\normalsize{
+\indent $\quad$ \textbf{Prof. Dr. Michael Wilczek}\\[0.2cm]
+\indent $\quad$ Physikalisches Institut \\ 
+\indent $\quad$ Universität Bayreuth\\ [0.4cm]
+\indent $\quad$ \textbf{Prof. Dr. Timo Betz}\\[0.2cm]
+\indent $\quad$ Drittes Physikalisches Institut - Biophysik \\ 
+\indent $\quad$ Georg-August-Universität G\"{o}ttingen\\[0.4cm]
+\indent $\quad$ \textbf{Prof. Dr. Ulrich Parlitz}\\[0.2cm]
+\indent $\quad$ Biomedical Physics Group\\ 
+\indent $\quad$ Max Planck Institute for Dynamics and Self-Organization\\[0.4cm]
+\indent $\quad$ \textbf{Prof. Dr. J\"{o}rg Enderlein}\\[0.2cm]
+\indent $\quad$ Drittes Physikalisches Institut - Biophysik\\ 
+\indent $\quad$ Georg-August-Universität G\"{o}ttingen\\[0.4cm]
+}
+
+% \vspace*{1cm}
+\indent Date of the oral examination: 09.06.2022
+
+% Title Page
+%========================================
+% \input{Additional/TitlePage.tex}
+% \currentpdfbookmark{Title Page}{TitlePage}
+
+
+% Copywright page (optional)
+% ========================================
+% \input{Additional/Copyright.tex}
+% Dedication page (optional)
+%========================================
+\pagenumbering{roman}
+\setcounter{page}{2}
+
+% \input{Additional/Dedication.tex}
+
+\input{Additional/Acknowledgements}
+\clearpage
+
+
+% \begin{singlespace}
+%     \setlength\cftbeforefigskip{\baselineskip}
+%     \Abstract
+% \end{singlespace}
+% \setcounter{page}{3}
+
+% Acknowledgements Page (optional)
+%========================================
+%\pagenumbering{roman} % Uncomment if Copyright page is not in use
+% \addcontentsline{toc}{chapter}{Acknowledgments}
+% %\setcounter{page}{2} % Uncomment if Copyright page is not in use
+% \input{Additional/Acknowledgements.tex}
+
+% Table of Contents
+%========================================
+%\pagenumbering{roman} % Uncomment if Copyright and Acknowledgements are not in use
+%\setcounter{page}{2} % Uncomment if Copyright and Acknowledgements are not in use
+
+% \renewcommand{\cftchapdotsep}{\cftdotsep}
+
+\renewcommand\contentsname{Table of Contents}
+% \begin{doublespacing}
+
+
+\tableofcontents{}
+\clearpage
+
+% \end{doublespacing}
+% \currentpdfbookmark{Table of Contents}{TOC}
+
+
+% List of figures and tables
+%========================================
+% \addcontentsline{toc}{chapter}{List of Tables}
+% \begin{singlespace}
+% 	\setlength\cftbeforetabskip{\baselineskip}
+
+
+% \listoftables
+
+
+% \end{singlespace}
+% \clearpage
+
+
+% \addcontentsline{toc}{chapter}{List of Figures}
+% \begin{siwnglespace}
+    % \setlength\cftbeforefigskip{\baselineskip}
+    
+% \listoffigures
+
+% \end{singwlespace}
+% \clearpage
+
+
+
+% Abstract
+%=========================================
+\input{Additional/Abstract.tex}
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Main Content
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% resume page numbering for rest of document
+\pagenumbering{arabic}
+\setcounter{page}{1} % set the page number appropriately
+
+% Chapter 1
+
+\input{MainContent/Chapter1.tex}
+\clearpage
+
+% Chapter 2
+
+\input{MainContent/Chapter2.tex}
+\clearpage
+
+% Chapter 3
+
+\input{MainContent/Chapter3.tex}
+\clearpage
+
+% Chapter 4
+
+\input{MainContent/Chapter4.tex}
+\clearpage
+
+% Chapter 5
+
+\input{MainContent/Chapter5.tex}
+\clearpage
+
+% Chapter 6
+
+\input{MainContent/Chapter6.tex}
+\clearpage
+
+% Appendices
+
+\input{MainContent/Appendix.tex}
+\clearpage
+
+% References
+%========================================
+
+\addcontentsline{toc}{chapter}{Bibliography}
+\begin{singlespace}
+	\setlength\bibitemsep{\baselineskip}
+	\printbibliography[title={Bibliography}]
+\end{singlespace}
+
+\end{document}
